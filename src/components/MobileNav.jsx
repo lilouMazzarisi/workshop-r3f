@@ -8,18 +8,18 @@ const MobileNav = ({ open }) => {
   const transition = useTransition(open, {
     from: {
       opacity: 0,
-      transformMain: "translateY(40px)",
+      transformMain: "translateX(100px)",
       transformFoot: "translateY(200px)",
     },
     enter: {
       opacity: 1,
-      transformMain: "translateY(0px)",
+      transformMain: "translateX(0px)",
       transformFoot: "translateY(0px)",
 
     },
     leave: {
       opacity: 0,
-      transformMain: "translateY(40px)",
+      transformMain: "translateX(-100px)",
       transformFoot: "translateY(200px)"
     }
   });
