@@ -1,17 +1,33 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef} from "react"
-export default function CanvasContainer() {
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import {useRef, useState} from "react"
+import * as THREE from "three";
+export default function CanvasContainer({count = 100}) {
   return (
       <Canvas className={"canvas"}>
-        <Box/>
+        {Array.from({length: count}, (_, i) => (
+            <Box key={i} z={-i}/>
+        ))}
       </Canvas>
   )
 }
 
-function Box() {
+function Box({z}) {
+  const { viewport, camera } = useThree()
   const ref = useRef()
-  useFrame(() => {
-    ref.current.rotation.y += 0.01;
+  const { width, height } = viewport.getCurrentViewport(camera, [0, 0, z])
+
+  const [data] = useState({
+    x: THREE.MathUtils.randFloatSpread(2),
+    y: THREE.MathUtils.randFloatSpread(height),
+  })
+
+
+
+  useFrame((state) => {
+    ref.current.position.set(data.x * width ,(data.y += 0.3), z)
+    if (data.y > height / 1.5)  {
+      data.y = -height / 1.5
+    }
   })
   return (
   <mesh ref={ref}>
