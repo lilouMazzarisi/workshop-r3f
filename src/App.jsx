@@ -1,6 +1,6 @@
 import './App.css'
+import CanvasContainer from './components/CanvasContainer';
 import Header from "./components/Header.jsx";
-import { CanvasContainer } from "./components/CanvasContainer"
 
 export default function App() {
 
