@@ -27,7 +27,6 @@ const Header = () => {
   }));
 
   return (
-<<<<<<< HEAD
     <>
       <header className="header">
         <div className={"header-container"}>
@@ -43,23 +42,6 @@ const Header = () => {
       </header>
       <MobileNav open={open} />
     </>
-=======
-      <>
-        <header className="header">
-          <div className={"header-container"}>
-            <Logo class={"logo"}/>
-            <HamburgerMenu
-                open={open}
-                toggle={toggle}
-                styles={styles}
-                api={api}
-                animationConfig={animationConfig}
-            />
-          </div>
-        </header>
-        <MobileNav open={open} />
-      </>
->>>>>>> main
   );
 };
 
